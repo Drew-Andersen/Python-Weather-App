@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-    {% load static %}
+{% load static %}
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="stylesheet" href="{% static 'css/weather.css' %}" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/weather.css' %}" />
     <title>Weather</title>
 </head>
 
@@ -15,23 +15,27 @@
     <div class="container">
         <form method="POST">
             {% csrf_token %}
-            <input type="text" name="city" placeholder="Enter a city name" required>
+            <input class="form-control my-3" type="text" name="city" placeholder="Enter a city name" required>
+            <input class="form-control mt-3 mb-3" type="text" name="state" placeholder="Enter state code (e.g., NY, CA)"
+                required>
             <input type="submit" value="Get Weather" class="btn btn-primary">
         </form>
 
         {% if error_message %}
-            <p class="error">{{ error_message }}</p>
+        <p class="error">{{ error_message }}</p>
         {% endif %}
 
         {% if weather_data %}
-            <div class="weather-container">
-                <h2>Weather in {{ weather_data.name }}, {% if weather_data.state %}{{ weather_data.state }}, {% endif %}{{ weather_data.sys.country }}</h2>
+        <div class="weather-container text-center">
+            <h2>Weather in {{ weather_data.name }}, {% if weather_data.state %}{{ weather_data.state }} {% endif %}</h2>
+            <div class="text-left mx-4">
                 <p>Temperature: {{ weather_data.main.temp_f }}°F</p>
                 <p>Humidity: {{ weather_data.main.humidity }}%</p>
                 <p>Condition: {{ weather_data.weather.0.description|title }}</p>
             </div>
-        {% endif %}
         </div>
+        {% endif %}
+    </div>
 </body>
 
 </html>
