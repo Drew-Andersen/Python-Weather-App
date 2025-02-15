@@ -11,8 +11,8 @@
 </head>
 
 <body>
-    <h1 class="text-center">Welcome to the Weather App</h1>
-    <div class="container">
+    <h1 class="text-center my-5">Welcome to the Weather App</h1>
+    <div class="container w-50">
         <form method="POST">
             {% csrf_token %}
             <input class="form-control my-3" type="text" name="city" placeholder="Enter a city name" required>
@@ -22,11 +22,11 @@
         </form>
 
         {% if error_message %}
-        <p class="error">{{ error_message }}</p>
+        <p class="error text-center my-3">{{ error_message }}</p>
         {% endif %}
 
         {% if weather_data %}
-        <div class="weather-container text-center">
+        <div class="weather-container text-center w-75">
             <h2>Weather in {{ weather_data.name }}, {% if weather_data.state %}{{ weather_data.state }} {% endif %}</h2>
             <div class="text-left mx-4">
                 <p>Temperature: {{ weather_data.main.temp_f }}°F</p>
