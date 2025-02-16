@@ -11,12 +11,23 @@
 </head>
 
 <body>
-    <h1 class="text-center my-5">Welcome to the Weather App</h1>
-    <div class="container w-50">
+    <div id="clouds">
+        <div class="cloud x1"></div>
+        <div class="cloud x2"></div>
+        <div class="cloud x3"></div>
+        <div class="cloud x4"></div>
+        <div class="cloud x5"></div>
+    </div>
+
+    <h1 class="top text-center">Welcome to the Weather App</h1>
+    <div class="container col-md-8 col-lg-6">
+
         <form method="POST">
             {% csrf_token %}
-            <input class="form-control my-3" type="text" name="city" placeholder="Enter a city name" required>
-            <input class="form-control mt-3 mb-3" type="text" name="state" placeholder="Enter state code (e.g., NY, CA)"
+            <label for="city" class="d-inline">City: </label>
+            <input class="form-control mb-3 d-inline" type="text" name="city" placeholder="Enter a city name" required>
+            <label for="state" class="mt-3 d-inline">State: </label>
+            <input class="form-control mb-3 d-inline" type="text" name="state" placeholder="Enter state code (e.g., NY, CA)"
                 required>
             <input type="submit" value="Get Weather" class="btn btn-primary">
         </form>
@@ -26,7 +37,7 @@
         {% endif %}
 
         {% if weather_data %}
-        <div class="weather-container text-center w-75">
+        <div class="weather-container text-center col-md-8 col-lg-6">
             <h2>Weather in {{ weather_data.name }}, {% if weather_data.state %}{{ weather_data.state }} {% endif %}</h2>
             <div class="text-left mx-4">
                 <p>Temperature: {{ weather_data.main.temp_f }}°F</p>
