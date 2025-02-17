@@ -39,7 +39,7 @@
         {% if weather_data %}
         <div class="weather-container text-center col-md-8 col-lg-6">
             <h2>Weather in {{ weather_data.name }}, {% if weather_data.state %}{{ weather_data.state }} {% endif %}</h2>
-            <div class="text-left mx-4">
+            <div class="text-left mx-4 mb-5">
                 <p>Temperature: {{ weather_data.main.temp_f }}°F</p>
                 <p>Humidity: {{ weather_data.main.humidity }}%</p>
                 <p>Condition: {{ weather_data.weather.0.description|title }}</p>
