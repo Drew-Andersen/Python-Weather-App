@@ -3,6 +3,7 @@
 set -o errexit
 
 pip3 install django
+pip3 install requests
 
 pip3 install -r requirements.txt
 
