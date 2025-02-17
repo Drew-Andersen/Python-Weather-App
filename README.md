@@ -63,6 +63,7 @@ To start the application, run: <br />
     <li>Toggle for Dark and Light Themes</li>
     <li>5-Day Forecast</li>
     <li>Interactive Map</li>
+</ul>
 
 ## License
 This project is licensed under the MIT License
